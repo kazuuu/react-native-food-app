@@ -49,39 +49,39 @@ const Section = ({title, onPress, children}) => {
 
 const Home = () => {
     const [selectedCategoryId, setSelectedCategoryId] = React.useState(1);
-    const [selectedMenuType, setSelectedMenuType] = React.useState(1);
+    const [selectedBasicFilterId, setSelectedBasicFilterId] = React.useState(1);
     const [menuList, setMenuList] = React.useState([]);
-    const [recommends, setRecommends] = React.useState([]);
-    const [popular, setPopular] = React.useState([]);
+    const [recommendList, setRecommendList] = React.useState([]);
+    const [popularList, setPopularList] = React.useState([]);
 
     React.useEffect(() => {
-        handleChangeCategory(selectedCategoryId, selectedMenuType)
+        handleChangeCategory(selectedCategoryId, selectedBasicFilterId)
     }, []);
 
     // Handler
-    function handleChangeCategory(categoryId, menuTypeId) {
+    function handleChangeCategory(categoryId, basicFilterId) {
         // Retrieve the recommended menu
-        let selectedRecommend = fakeDataAPI.menu.find(a => a.name == 'Recommended');
+        let selectedRecommendList = fakeDataAPI.menu.find(a => a.name == 'Recommended');
 
         // Retrieve the popular menu
-        let selectedPopular = fakeDataAPI.menu.find(a => a.name == 'Popular');
+        let selectedPopularList = fakeDataAPI.menu.find(a => a.name == 'Popular');
 
         // Find the menu based on the menuTypeId
-        let selectedMenu = fakeDataAPI.menu.find(a => a.id == menuTypeId);
+        let selectedMenuList = fakeDataAPI.menu.find(a => a.id == basicFilterId);
 
         // Set the recommended menu based on categoryId
-        setRecommends(selectedRecommend?.list.filter(a => a.categories.includes(categoryId)));
+        setRecommendList(selectedRecommendList?.list.filter(a => a.categories.includes(categoryId)));
 
         // Set the popular menu based on categoryId
-        setPopular(selectedPopular?.list.filter(a => a.categories.includes(categoryId)));
+        setPopularList(selectedPopularList?.list.filter(a => a.categories.includes(categoryId)));
         
         // Set the menu based on the category Id
-        setMenuList(selectedMenu?.list.filter(a => a.categories.includes(categoryId)));
+        setMenuList(selectedMenuList?.list.filter(a => a.categories.includes(categoryId)));
     }
 
     // Renders
 
-    function renderMenuTypes() {
+    function renderBasicFilter() {
         return (
             <FlatList
                 horizontal
@@ -99,13 +99,13 @@ const Home = () => {
                             marginRight: index == fakeDataAPI.menu.length -1 ? SIZES.margin : 0
                         }}
                         onPress={() => {
-                            setSelectedMenuType(item.id);
+                            setSelectedBasicFilterId(item.id);
                             handleChangeCategory(selectedCategoryId, item.id);
                         }}
                     >
                         <Text
                             style={{
-                                color: selectedMenuType == item.id ? COLORS.primary : COLORS.black,
+                                color: selectedBasicFilterId == item.id ? COLORS.primary : COLORS.black,
                                 fontSize: SIZES.fontRegular,
                             }}
                         >
@@ -124,7 +124,7 @@ const Home = () => {
                 onPress={() => console.log('Show all recommended')}
             >
                 <FlatList 
-                    data={recommends}
+                    data={recommendList}
                     horizontal
                     keyExtractor={item => `${item.id}`}
                     showsHorizontalScrollIndicator={false}
@@ -134,7 +134,7 @@ const Home = () => {
                                 height: 180,
                                 width: SIZES.width * 0.85,
                                 marginLeft: index == 0 ? SIZES.margin : SIZES.fieldSpace,
-                                marginRight: index == recommends.length - 1 ? SIZES.margin : 0,
+                                marginRight: index == recommendList.length - 1 ? SIZES.margin : 0,
                                 paddingRight: SIZES.radius,
                                 alignItems: 'center'
                             }}
@@ -159,7 +159,7 @@ const Home = () => {
                 onPress={() => console.log('Show all popular items')}
             >
                 <FlatList 
-                    data={recommends}
+                    data={recommendList}
                     horizontal
                     keyExtractor={item => `${item.id}`}
                     showsHorizontalScrollIndicator={false}
@@ -167,7 +167,7 @@ const Home = () => {
                         <VerticalFoodCard 
                             containerStyle={{
                                 marginLeft: index == 0 ? SIZES.margin : SIZES.fieldSpace,
-                                marginRight: index == recommends.length - 1 ? SIZES.margin : 0,
+                                marginRight: index == recommendList.length - 1 ? SIZES.margin : 0,
                             }}
                             item={item}
                             onPress={() => console.log('VerticalFoodCard')}
@@ -199,7 +199,7 @@ const Home = () => {
                             }}
                             onPress={() => {
                                 setSelectedCategoryId(item.id);
-                                handleChangeCategory(item.id, selectedMenuType);
+                                handleChangeCategory(item.id, selectedBasicFilterId);
                             }}
                         >
                             <Image 
@@ -302,7 +302,7 @@ const Home = () => {
                         {renderRecommendedSection()}
 
                         {/* Meny Type */}
-                        {renderMenuTypes()}
+                        {renderBasicFilter()}
                     </View>
                 }
                 renderItem={({item, index}) => {
