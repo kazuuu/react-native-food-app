@@ -2,6 +2,8 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
+import { SIZES, COLORS } from '../constants'
+
 const HomeScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
@@ -18,7 +20,7 @@ const HomeScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.backgroundLight,
     alignItems: 'center',
     justifyContent: 'center',
   },

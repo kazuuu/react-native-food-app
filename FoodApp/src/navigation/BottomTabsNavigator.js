@@ -1,11 +1,56 @@
 import React from 'react';
-import { Text, Platform } from 'react-native';
+import { Text, Platform, View } from 'react-native';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import HomeScreen from "../screens/HomeScreen"
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import HomeScreen from "../screens/HomeScreen";
+
+import { SIZES, COLORS } from '../constants';
 
 export default () => {
     const BottomTab = createBottomTabNavigator();
+
+    const TabButton = ({label, icon, focused}) => {
+        return (
+            <View
+                style={[
+                    {
+                        flex: 1,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    },
+                ]}
+            >
+                <View
+                    style={[
+                        {
+                            flexDirection: 'column',
+                            height: 50, 
+                            minWidth: 50,
+                            paddingHorizontal: SIZES.margin,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            borderRadius: 25,
+                            backgroundColor: focused ? COLORS.primary : COLORS.white,
+                        },
+                    ]}
+                >
+                    {icon}
+
+                    {focused &&
+                        <Text
+                            numberOfLines={1}
+                            style={{
+                                color: focused ? COLORS.white : COLORS.primary,
+                                fontSize: SIZES.fontSmallest,
+                            }}
+                        >
+                            {label}
+                        </Text>
+                    }
+                </View>
+            </View>
+        )
+    }
 
     return (
             <BottomTab.Navigator
@@ -13,83 +58,103 @@ export default () => {
                     headerShown: false,
                     unmountOnBlur: true,
                     tabBarShowLabel: false,
-                    tabBarStyle: { height: Platform.OS === 'ios' ? 100 : 50 },
+                    tabBarStyle: { 
+                        width: '95%',
+                        height: 100,
+                        marginBottom: SIZES.margin * 3,
+                        alignSelf: 'center',
+                        paddingHorizontal: SIZES.margin,
+                        paddingTop: Platform.OS === 'ios' ? 25 : 0,
+                        backgroundColor: COLORS.lightGray,
+                        borderRadius: 100,
+                    },
                     tabBarActiveTintColor: 'tomato',
                     tabBarInactiveTintColor: 'gray',
                 })}
+
             >
                 <BottomTab.Screen 
                     name="HomeTab" 
                     component={HomeScreen}
                     options={{
                         tabBarIcon: ({ focused }) => (
-                            <>
-                                <MaterialCommunityIcons
-                                    name='home'
-                                    size={20}
-                                    color={focused ? '#ee125a' : '#91A2AD'}
-                                />
-                                <Text
-                                    allowFontScaling={false}
-                                    style={{
-                                        color: focused ? '#ee125a' : '#91A2AD',
-                                        width: 50,
-                                        fontSize: 11,
-                                        textAlign: 'center'
-                                    }}>
-                                    Home
-                                </Text>
-                            </>
+                            <TabButton
+                                label='Home'
+                                focused={focused}
+                                icon={<Ionicons
+                                        name='home'
+                                        size={20}
+                                        color={focused ? COLORS.white : COLORS.primary}
+                                />}
+                            />
                         )
                     }}            
                 />
                 <BottomTab.Screen
-                    name="MessageTab"
+                    name="SearchTab"
                     component={HomeScreen} 
                     options={{
                         tabBarIcon: ({ focused }) => (
-                            <>
-                                <MaterialCommunityIcons
-                                    name='message'
-                                    size={20}
-                                    color={focused ? '#ee125a' : '#91A2AD'}
-                                />
-                                <Text
-                                    allowFontScaling={false}
-                                    style={{
-                                        color: focused ? '#ee125a' : '#91A2AD',
-                                        width: 50,
-                                        fontSize: 11,
-                                        textAlign: 'center'
-                                    }}>
-                                    Message
-                                </Text>
-                            </>
+                            <TabButton
+                                label='Search'
+                                focused={focused}
+                                icon={<Ionicons
+                                        name='md-search-sharp'
+                                        size={20}
+                                        color={focused ? COLORS.white : COLORS.primary}
+                                />}
+                            />
                         )
                     }}
                 />
                 <BottomTab.Screen
-                    name="AccountTab"
+                    name="CarrinhoTab"
                     component={HomeScreen} 
                     options={{
                         tabBarIcon: ({ focused }) => (
-                            <>
-                                <MaterialCommunityIcons
-                                    name='account'
-                                    size={20}
-                                    color={focused ? '#ee125a' : '#91A2AD'}
-                                />
-                                <Text
-                                    allowFontScaling={false}
-                                    style={{
-                                        color: focused ? '#ee125a' : '#91A2AD',
-                                        width: 50,
-                                        fontSize: 11,
-                                        textAlign: 'center'
-                                    }}>
-                                    Account
-                                </Text>
-                            </>
+                            <TabButton
+                                label='Carrinho'
+                                focused={focused}
+                                icon={<Ionicons
+                                        name='ios-cart-outline'
+                                        size={20}
+                                        color={focused ? COLORS.white : COLORS.primary}
+                                />}
+                            />
+                        )
+                    }}
+                />
+                <BottomTab.Screen
+                    name="FavoriteTab"
+                    component={HomeScreen} 
+                    options={{
+                        tabBarIcon: ({ focused }) => (
+                            <TabButton
+                                label='Favorite'
+                                focused={focused}
+                                icon={<Ionicons
+                                        name='heart-outline'
+                                        size={20}
+                                        color={focused ? COLORS.white : COLORS.primary}
+                                />}
+                            />
+                        )
+                    }}
+                />
+                <BottomTab.Screen
+                    name="Notification"
+                    component={HomeScreen} 
+                    options={{
+                        tabBarIcon: ({ focused }) => (
+                            <TabButton
+                                label='Notification'
+                                focused={focused}
+                                icon={<Ionicons
+                                        name='notifications-outline'
+                                        size={20}
+                                        color={focused ? COLORS.white : COLORS.primary}
+                                />}
+                            />
                         )
                     }}
                 />
