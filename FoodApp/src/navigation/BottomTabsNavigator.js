@@ -3,6 +3,10 @@ import { Text, Platform, View } from 'react-native';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeScreen from "../screens/HomeScreen";
+import SearchScreen from "../screens/SearchScreen";
+import CartScreen from "../screens/CartScreen";
+import FavoriteScreen from "../screens/FavoriteScreen";
+import NotificationScreen from "../screens/NotificationScreen";
 
 import { SIZES, COLORS } from '../constants';
 
@@ -65,7 +69,7 @@ export default () => {
                         alignSelf: 'center',
                         paddingHorizontal: SIZES.margin,
                         paddingTop: Platform.OS === 'ios' ? 25 : 0,
-                        backgroundColor: COLORS.lightGray,
+                        backgroundColor: COLORS.gray,
                         borderRadius: 100,
                     },
                     tabBarActiveTintColor: 'tomato',
@@ -92,7 +96,7 @@ export default () => {
                 />
                 <BottomTab.Screen
                     name="SearchTab"
-                    component={HomeScreen} 
+                    component={SearchScreen} 
                     options={{
                         tabBarIcon: ({ focused }) => (
                             <TabButton
@@ -109,7 +113,7 @@ export default () => {
                 />
                 <BottomTab.Screen
                     name="CarrinhoTab"
-                    component={HomeScreen} 
+                    component={CartScreen} 
                     options={{
                         tabBarIcon: ({ focused }) => (
                             <TabButton
@@ -126,7 +130,7 @@ export default () => {
                 />
                 <BottomTab.Screen
                     name="FavoriteTab"
-                    component={HomeScreen} 
+                    component={FavoriteScreen} 
                     options={{
                         tabBarIcon: ({ focused }) => (
                             <TabButton
@@ -143,7 +147,7 @@ export default () => {
                 />
                 <BottomTab.Screen
                     name="Notification"
-                    component={HomeScreen} 
+                    component={NotificationScreen} 
                     options={{
                         tabBarIcon: ({ focused }) => (
                             <TabButton
