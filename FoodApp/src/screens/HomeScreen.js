@@ -190,7 +190,7 @@ const Home = () => {
                             style={{
                                 flexDirection: 'row',
                                 height: 55,
-                                marginTop: SIZES.fieldSpace,
+                                marginTop: SIZES.margin,
                                 marginLeft: index == 0 ? SIZES.margin : SIZES.fieldSpace,
                                 marginRight: index == fakeDataAPI.categories.length - 1 ? SIZES.margin : 0,
                                 paddingHorizontal: SIZES.margin,
