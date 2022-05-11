@@ -42,7 +42,6 @@ export default () => {
                 </View>                 
             </View>
         );
-
     }
 
     return (
@@ -161,3 +160,4 @@ export default () => {
         </BottomTab.Navigator>
     );
 }
+
