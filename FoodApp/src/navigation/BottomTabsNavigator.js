@@ -3,6 +3,8 @@ import { Text, Platform } from 'react-native';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import HomeScreen from "../screens/HomeScreen"
+import MessageScreen from "../screens/MessageScreen"
+import AccountScreen from "../screens/AccountScreen"
 
 export default () => {
     const BottomTab = createBottomTabNavigator();
@@ -10,8 +12,12 @@ export default () => {
     return (
             <BottomTab.Navigator
                 screenOptions={({ route }) => ({
-                    headerShown: false,
-                    unmountOnBlur: true,
+                    headerShown: true,
+                    headerTintColor: 'white',
+                    headerStyle: {
+                        backgroundColor: '#ee125a',
+                    },
+                        unmountOnBlur: true,
                     tabBarShowLabel: false,
                     tabBarStyle: { height: Platform.OS === 'ios' ? 100 : 50 },
                     tabBarActiveTintColor: 'tomato',
@@ -19,7 +25,7 @@ export default () => {
                 })}
             >
                 <BottomTab.Screen 
-                    name="HomeTab" 
+                    name="Home" 
                     component={HomeScreen}
                     options={{
                         tabBarIcon: ({ focused }) => (
@@ -44,8 +50,8 @@ export default () => {
                     }}            
                 />
                 <BottomTab.Screen
-                    name="MessageTab"
-                    component={HomeScreen} 
+                    name="Message"
+                    component={MessageScreen} 
                     options={{
                         tabBarIcon: ({ focused }) => (
                             <>
@@ -69,8 +75,8 @@ export default () => {
                     }}
                 />
                 <BottomTab.Screen
-                    name="AccountTab"
-                    component={HomeScreen} 
+                    name="Account"
+                    component={AccountScreen} 
                     options={{
                         tabBarIcon: ({ focused }) => (
                             <>
