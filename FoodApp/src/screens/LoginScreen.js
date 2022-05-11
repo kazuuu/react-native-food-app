@@ -7,7 +7,7 @@ const LoginScreen = ({ navigation }) => {
       <Text>Login Screen</Text>
       <Button 
         title='Ir para Home'
-        onPress={() => navigation.replace('Home', { username: 'Joao' })}
+        onPress={() => navigation.replace('BottomTabsNavigator', { username: 'Joao' })}
       />
     </View>
   );

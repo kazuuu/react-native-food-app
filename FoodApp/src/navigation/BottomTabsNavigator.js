@@ -74,7 +74,7 @@ export default () => {
             })}
         >
             <BottomTab.Screen 
-                name="HomeTab" 
+                name="Home" 
                 component={HomeScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
@@ -91,7 +91,7 @@ export default () => {
                 }}            
             />
             <BottomTab.Screen
-                name="SearchTab"
+                name="Search"
                 component={HomeScreen} 
                 options={{
                     tabBarIcon: ({ focused }) => (
@@ -108,12 +108,12 @@ export default () => {
                 }}
             />
             <BottomTab.Screen
-                name="CartTab"
+                name="Cart"
                 component={HomeScreen} 
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <TabButton 
-                            label='Home'
+                            label='Cart'
                             icon={<Ionicons
                                 name='ios-cart-outline'
                                 size={20}
@@ -125,12 +125,12 @@ export default () => {
                 }}
             />
             <BottomTab.Screen
-                name="FavoriteTab"
+                name="Favorite"
                 component={HomeScreen} 
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <TabButton 
-                            label='Home'
+                            label='Favorite'
                             icon={<Ionicons
                                 name='heart-outline'
                                 size={20}
@@ -142,12 +142,12 @@ export default () => {
                 }}
             />
             <BottomTab.Screen
-                name="NotificationTab"
+                name="Notification"
                 component={HomeScreen} 
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <TabButton 
-                            label='Home'
+                            label='Notification'
                             icon={<Ionicons
                                 name='notifications-outline'
                                 size={20}
@@ -159,5 +159,5 @@ export default () => {
                 }}
             />
         </BottomTab.Navigator>
-    )
+    );
 }
