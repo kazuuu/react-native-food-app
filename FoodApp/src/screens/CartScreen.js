@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 
 import { SIZES, COLORS } from '../constants'
 
@@ -7,6 +7,7 @@ const CartScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Text>Cart Screen</Text>
+      <Button title='Sair' onPress={() => navigation.replace('Login')} />
     </View>
   );
 }

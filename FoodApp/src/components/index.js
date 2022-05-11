@@ -1,9 +1,11 @@
-import CustomAppBar from "./CustomAppBar";
+import AppHeaderAvatar from "./AppHeaderAvatar";
+import AppHeader from "./AppHeader";
 import HorizontalFoodCard from './HorizontalFoodCard';
 import VerticalFoodCard from './VerticalFoodCard';
 
 export {
-    CustomAppBar,
+    AppHeader,
+    AppHeaderAvatar,
     HorizontalFoodCard,
     VerticalFoodCard,
 }

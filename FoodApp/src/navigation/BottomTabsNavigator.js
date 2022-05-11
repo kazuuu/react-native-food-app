@@ -9,6 +9,7 @@ import FavoriteScreen from "../screens/FavoriteScreen";
 import NotificationScreen from "../screens/NotificationScreen";
 
 import { SIZES, COLORS } from '../constants';
+import { AppHeaderAvatar } from '../components';
 
 export default () => {
     const BottomTab = createBottomTabNavigator();
@@ -59,7 +60,15 @@ export default () => {
     return (
             <BottomTab.Navigator
                 screenOptions={({ route }) => ({
-                    headerShown: false,
+                    headerShown: true,
+                    headerTintColor: COLORS.white,
+                    headerStyle: {
+                        backgroundColor: COLORS.primary,
+                    },
+                    headerRight: (props) => <AppHeaderAvatar />,
+                    headerRightContainerStyle: {
+                        right: SIZES.margin*2,
+                    },
                     unmountOnBlur: true,
                     tabBarShowLabel: false,
                     tabBarStyle: { 
@@ -78,7 +87,7 @@ export default () => {
 
             >
                 <BottomTab.Screen 
-                    name="HomeTab" 
+                    name="Home" 
                     component={HomeScreen}
                     options={{
                         tabBarIcon: ({ focused }) => (
@@ -95,7 +104,7 @@ export default () => {
                     }}            
                 />
                 <BottomTab.Screen
-                    name="SearchTab"
+                    name="Search"
                     component={SearchScreen} 
                     options={{
                         tabBarIcon: ({ focused }) => (
@@ -112,7 +121,7 @@ export default () => {
                     }}
                 />
                 <BottomTab.Screen
-                    name="CarrinhoTab"
+                    name="Carrinho"
                     component={CartScreen} 
                     options={{
                         tabBarIcon: ({ focused }) => (
@@ -129,7 +138,7 @@ export default () => {
                     }}
                 />
                 <BottomTab.Screen
-                    name="FavoriteTab"
+                    name="Favorite"
                     component={FavoriteScreen} 
                     options={{
                         tabBarIcon: ({ focused }) => (

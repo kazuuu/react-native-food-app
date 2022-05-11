@@ -6,6 +6,7 @@ import {
     Image,
     TextInput,
     FlatList,
+    Button,
 } from 'react-native';
 import { SIZES, COLORS, icons, fakeDataAPI } from '../constants'
 import { HorizontalFoodCard, VerticalFoodCard } from '../components';

@@ -7,35 +7,17 @@ import {
 } from 'react-native';
 import { COLORS, SIZES, fakeDataAPI } from "../constants";
 
-const CustomAppBar = ({title}) => {
+const AppHeaderAvatar = ({title}) => {
     return (
         <View
             style={{
                 flexDirection: 'row',
             }}
         >
-            {/* Title */}
-            <View
-                style={{
-                    flex: 1,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                }}
-            >
-                <Text style={{ ...SIZES.fontRegular }}>
-                    {title}
-                </Text>
-            </View>
-
             {/* Right Component */}
             <Pressable
                 style={({pressed}) => [
                     { opacity: pressed ? 0.5 : 1.0, },
-                    {
-                        marginRight: SIZES.margin * 2,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                    },
                 ]}
                 // onPress={() => navigation.openDrawer()}
             >
@@ -52,5 +34,5 @@ const CustomAppBar = ({title}) => {
     )
 }
 
-export default CustomAppBar;
+export default AppHeaderAvatar;
 
