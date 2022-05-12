@@ -4,6 +4,7 @@ import { Text, Platform, View, BackHandler } from 'react-native';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import HomeScreen from "../screens/HomeScreen"
+import AccountScreen from "../screens/AccountScreen"
 
 import { COLORS, SIZES } from '../constants'
 import { AppHeaderAvatar } from '../components';
@@ -91,7 +92,7 @@ export default () => {
             />
             <BottomTab.Screen
                 name="Search"
-                component={HomeScreen} 
+                component={AccountScreen} 
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <TabButton 
@@ -108,7 +109,7 @@ export default () => {
             />
             <BottomTab.Screen
                 name="Cart"
-                component={HomeScreen} 
+                component={AccountScreen} 
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <TabButton 
@@ -125,7 +126,7 @@ export default () => {
             />
             <BottomTab.Screen
                 name="Favorite"
-                component={HomeScreen} 
+                component={AccountScreen} 
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <TabButton 
@@ -142,7 +143,7 @@ export default () => {
             />
             <BottomTab.Screen
                 name="Notification"
-                component={HomeScreen} 
+                component={AccountScreen} 
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <TabButton 

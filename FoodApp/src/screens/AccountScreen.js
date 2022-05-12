@@ -13,6 +13,9 @@ const AccountScreen = ({ navigation }) => {
         <Button title="Ir para OneScreen"  
           onPress={() => navigation.navigate('One')} 
         />
+        <Button title="Sair"  
+          onPress={() => navigation.replace('Login')} 
+        />
     </View>
   );
 };
